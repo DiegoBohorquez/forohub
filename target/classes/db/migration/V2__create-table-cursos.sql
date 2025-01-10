@@ -1,0 +1,7 @@
+CREATE TABLE cursos
+(
+    id INT AUTO_INCREMENT NOT NULL,
+    nombre VARCHAR(30),
+    categoria ENUM('TECNOLOGIA', 'SALUD', 'NUTRICION', 'EMPRENDIMIENTO'),
+    CONSTRAINT pk_cursos PRIMARY KEY(id)
+)
