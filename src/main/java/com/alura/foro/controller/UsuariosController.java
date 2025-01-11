@@ -1,8 +1,6 @@
 package com.alura.foro.controller;
 
-import com.alura.foro.ValidacionException;
-import com.alura.foro.models.cursos.DatosActualizarCurso;
-import com.alura.foro.models.cursos.DatosRegistroCurso;
+import com.alura.foro.infra.errores.ValidacionException;
 import com.alura.foro.models.perfiles.PerfilRepository;
 import com.alura.foro.models.usuarios.*;
 import jakarta.transaction.Transactional;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 @RestController

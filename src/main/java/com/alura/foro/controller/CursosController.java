@@ -1,6 +1,5 @@
 package com.alura.foro.controller;
 
-import com.alura.foro.ValidacionException;
 import com.alura.foro.models.cursos.DatosActualizarCurso;
 import com.alura.foro.models.cursos.Curso;
 import com.alura.foro.models.cursos.CursoRepository;
@@ -8,7 +7,6 @@ import com.alura.foro.models.cursos.DatosListadoCurso;
 import com.alura.foro.models.cursos.DatosRegistroCurso;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

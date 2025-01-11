@@ -1,12 +1,11 @@
 package com.alura.foro.controller;
 
-import com.alura.foro.ValidacionException;
+import com.alura.foro.infra.errores.ValidacionException;
 import com.alura.foro.models.respuestas.*;
 import com.alura.foro.models.topico.TopicoRepository;
 import com.alura.foro.models.usuarios.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

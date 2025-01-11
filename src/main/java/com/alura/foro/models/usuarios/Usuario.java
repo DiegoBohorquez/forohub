@@ -6,6 +6,12 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 
 @Table(name = "usuarios")
@@ -13,7 +19,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Usuario {
+public class Usuario implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,6 +37,17 @@ public class Usuario {
         this.email = datosRegistroUsuario.email();
         this.contra = datosRegistroUsuario.contra();
         this.perfil = perfil;
+    }
+
+    public void actualizarUsuario(DatosActualizarUsuario datosActualizarUsuario) {
+        if(datosActualizarUsuario.nombre() != null) {
+            this.nombre = datosActualizarUsuario.nombre();
+        }
+
+        if (datosActualizarUsuario.contra() != null) {
+            this.contra = datosActualizarUsuario.contra();
+        }
+
     }
 
     public Long getId() {
@@ -52,14 +70,38 @@ public class Usuario {
         return perfil;
     }
 
-    public void actualizarUsuario(DatosActualizarUsuario datosActualizarUsuario) {
-        if(datosActualizarUsuario.nombre() != null) {
-            this.nombre = datosActualizarUsuario.nombre();
-        }
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
 
-        if (datosActualizarUsuario.contra() != null) {
-            this.contra = datosActualizarUsuario.contra();
-        }
+    @Override
+    public String getPassword() {
+        return contra;
+    }
 
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

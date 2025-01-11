@@ -1,6 +1,6 @@
 package com.alura.foro.controller;
 
-import com.alura.foro.ValidacionException;
+import com.alura.foro.infra.errores.ValidacionException;
 import com.alura.foro.models.cursos.CursoRepository;
 import com.alura.foro.models.topico.*;
 import com.alura.foro.models.usuarios.UsuarioRepository;
